@@ -1,0 +1,139 @@
+---
+const items = [
+  {
+    year: "2020 - 2022",
+    title: "Baccalaureate Tecnológico",
+    place: "IES Atenea. Ciudad Real.",
+  },
+  {
+    year: "2022 - 2026",
+    title: "Grado en Ingeniería Informática",
+    place: "Escuela Superior de Informática. UCLM. Ciudad Real.",
+  },
+
+];
+---
+
+<section class="edu">
+  <h2>Formación académica</h2>
+
+  <div class="edu-timeline">
+    <div class="edu-line" aria-hidden="true"></div>
+      <div class="edu-arrow" aria-hidden="true"></div>
+
+    <div class="edu-items">
+      {items.map((item) => (
+        <article class="edu-item">
+          <div class="edu-dot" aria-hidden="true"></div>
+          <div class="edu-card">
+            <span class="edu-year">{item.year}</span>
+            <h3>{item.title}</h3>
+            <p class="edu-place">{item.place}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+  
+</section>
+
+<style>
+    .edu {
+        max-width: 900px;
+        margin: 0 auto 3rem;
+        padding: 2rem;
+        border-radius: 1.5rem;
+        background: rgba(15, 23, 42, 0.9);
+        border: 1px solid rgba(148, 163, 184, 0.3);
+        color: #e5e7eb;
+    }
+
+    .edu h2 {
+        margin-top: 0;
+        margin-bottom: 1.5rem;
+        font-size: 1.6rem;
+    }
+
+    .edu-timeline {
+        position: relative;
+        overflow-x: auto;
+        padding-bottom: 0.5rem;
+    }
+
+    .edu-line {
+        position: absolute;
+        top: 40px;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: linear-gradient(to right, #22c55e, #4ade80);
+        opacity: 0.6;
+    }
+
+    .edu-arrow {
+        position: absolute;
+        top: 34px;
+        right: 0;
+        width: 0;
+        height: 0;
+        border-top: 7px solid transparent;
+        border-bottom: 7px solid transparent;
+        border-left: 10px solid #22c55e;
+    }
+
+    .edu-items {
+        display: flex;
+        gap: 10rem;
+        padding: 0.5rem 0.25rem 0;
+    }
+
+    .edu-item {
+        position: relative;
+        min-width: 220px;
+    }
+
+    .edu-dot {
+        width: 14px;
+        height: 14px;
+        border-radius: 999px;
+        background: #22c55e;
+        border: 3px solid #022c22;
+        position: absolute;
+        top: 33px;
+        left: 0;
+        transform: translateX(0);
+        box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.25);
+    }
+
+    .edu-card {
+        margin-top: 56px;
+        padding: 1rem 1rem 1.1rem 0;
+    }
+
+    .edu-year {
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: #9ca3af;
+    }
+
+    .edu-card h3 {
+        margin: 0.25rem 0 0.2rem;
+        font-size: 1rem;
+    }
+
+    .edu-place {
+        margin: 0 0 0.3rem;
+        font-size: 0.9rem;
+        color: #a5b4fc;
+    }
+
+    .edu-timeline::-webkit-scrollbar {
+        height: 6px;
+    }
+    .edu-timeline::-webkit-scrollbar-thumb {
+        background: rgba(148, 163, 184, 0.6);
+        border-radius: 999px;
+    }
+
+</style>
