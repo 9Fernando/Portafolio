@@ -7,27 +7,19 @@ const parrafos = [
 ];
 
 const location = "Ciudad Real, España";
-const phone = "+34 682 51 12 15";
 const languages = ["Español (nativo)", "Inglés (B2)", "Francés (B2)"];
 ---
 
 <section class="about">
   <div class="about-left">
     <h2>{titulo}</h2>
-    {parrafos.map((texto) => (
-      <p>{texto}</p>
-    ))}
+    {parrafos.map((texto) => <p>{texto}</p>)}
   </div>
 
   <div class="about-right">
     <button class="info-chip">
       <span class="info-label">Ubicación</span>
       <span class="info-value">{location}</span>
-    </button>
-
-    <button class="info-chip">
-      <span class="info-label">Teléfono</span>
-      <span class="info-value">{phone}</span>
     </button>
 
     <button class="info-chip">
@@ -39,78 +31,78 @@ const languages = ["Español (nativo)", "Inglés (B2)", "Francés (B2)"];
   </div>
 </section>
 
-
 <style>
+  .about {
+    max-width: 900px;
+    margin: 0 auto 3rem;
+    padding: 2rem;
+    border-radius: 1.5rem;
+    background: rgba(15, 23, 42, 0.9);
+    border: 1px solid rgba(148, 163, 184, 0.3);
+    color: #e5e7eb;
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1.2fr);
+    gap: 2rem;
+  }
+
+  .about-left h2 {
+    font-size: 1.6rem;
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+
+  .about-left p {
+    margin: 0 0 0.75rem;
+    line-height: 1.7;
+    color: #cbd5f5;
+  }
+
+  .about-right {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .info-chip {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border-radius: 0.9rem;
+    border: 1px solid rgba(148, 163, 184, 0.5);
+    background: rgba(15, 23, 42, 0.9);
+    color: #e5e7eb;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.2rem;
+    cursor: default;
+    text-align: left;
+    transition:
+      border-color 0.15s ease,
+      background 0.15s ease,
+      transform 0.1s ease;
+  }
+
+  .info-chip:hover {
+    border-color: #22c55e;
+    background: rgba(15, 23, 42, 1);
+    transform: translateY(-1px);
+  }
+
+  .info-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #9ca3af;
+  }
+
+  .info-value {
+    font-size: 0.95rem;
+    font-weight: 500;
+  }
+
+  @media (max-width: 768px) {
     .about {
-        max-width: 900px;
-        margin: 0 auto 3rem;
-        padding: 2rem;
-        border-radius: 1.5rem;
-        background: rgba(15, 23, 42, 0.9);
-        border: 1px solid rgba(148, 163, 184, 0.3);
-        color: #e5e7eb;
-        display: grid;
-        grid-template-columns: minmax(0, 2fr) minmax(0, 1.2fr);
-        gap: 2rem;
+      grid-template-columns: 1fr;
     }
-
-    .about-left h2 {
-        font-size: 1.6rem;
-        margin-top: 0;
-        margin-bottom: 1rem;
-    }
-
-    .about-left p {
-        margin: 0 0 0.75rem;
-        line-height: 1.7;
-        color: #cbd5f5;
-    }
-
-    .about-right {
-        display: flex;
-        flex-direction: column;
-        gap: 0.75rem;
-    }
-
-    .info-chip {
-        width: 100%;
-        padding: 0.8rem 1rem;
-        border-radius: 0.9rem;
-        border: 1px solid rgba(148, 163, 184, 0.5);
-        background: rgba(15, 23, 42, 0.9);
-        color: #e5e7eb;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.2rem;
-        cursor: default;
-        text-align: left;
-        transition: border-color 0.15s ease, background 0.15s ease, transform 0.1s ease;
-    }
-
-    .info-chip:hover {
-        border-color: #22c55e;
-        background: rgba(15, 23, 42, 1);
-        transform: translateY(-1px);
-    }
-
-    .info-label {
-        font-size: 0.7rem;
-        text-transform: uppercase;
-        letter-spacing: 0.12em;
-        color: #9ca3af;
-    }
-
-    .info-value {
-        font-size: 0.95rem;
-        font-weight: 500;
-    }
-
-
-    @media (max-width: 768px) {
-        .about {
-            grid-template-columns: 1fr;
-        }
-    }
-
+  }
 </style>

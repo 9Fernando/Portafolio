@@ -1,0 +1,452 @@
+---
+import { Image } from "astro:assets";
+
+import javaIcon from "../assets/javaIcon.png";
+import pythonIcon from "../assets/pythonIcon.png";
+import csharpIcon from "../assets/csharpIcon.png";
+import phpIcon from "../assets/phpIcon.png";
+import cssIcon from "../assets/cssIcon.png";
+import htmlIcon from "../assets/htmlIcon.png";
+import vBasicIcon from "../assets/vBasicIcon.png";
+import cIcon from "../assets/cIcon.png";
+import tsIcon from "../assets/tsIcon.png";
+import jsIcon from "../assets/jsIcon.png";
+import angularIcon from "../assets/angularIcon.png";
+import springIcon from "../assets/springIcon.png";
+import unityIcon from "../assets/unityIcon.png";
+import dotnetIcon from "../assets/dotnetIcon.png";
+import mysqlIcon from "../assets/mysqlIcon.png";
+import oracleIcon from "../assets/oracleIcon.png";
+import postgreIcon from "../assets/postgreIcon.png";
+import gitIcon from "../assets/gitIcon.png";
+import dockerIcon from "../assets/dockerIcon.png";
+import postmanIcon from "../assets/postmanIcon.png";
+import wordpressIcon from "../assets/wordpressIcon.png";
+import vscodeIcon from "../assets/vscodeIcon.png";
+import intellijIcon from "../assets/intellijIcon.png";
+import eclipseIcon from "../assets/eclipseIcon.png";
+import mvsIcon from "../assets/mvsIcon.png";
+import wiresharkIcon from "../assets/wiresharkIcon.png";
+import linuxIcon from "../assets/linuxIcon.png";
+import modelIcon from "../assets/modelIcon.png";
+import modelanimIcon from "../assets/modelanimIcon.png";
+import modIcon from "../assets/modIcon.png";
+
+
+const skillCategories = [
+    {
+        id: "languages",
+        title: "Lenguajes",
+        skills: [
+            { name: "Java", icon: javaIcon },
+            { name: "Python", icon: pythonIcon },
+            { name: "C#", icon: csharpIcon },
+            { name: "PHP", icon: phpIcon },
+            { name: "TypeScript", icon: tsIcon },
+            { name: "JavaScript", icon: jsIcon },
+            { name: "HTML", icon: htmlIcon },
+            { name: "CSS", icon: cssIcon },
+            { name: "C", icon: cIcon },
+            { name: "Visual Basic", icon: vBasicIcon },
+        ],
+    },
+    {
+        id: "frameworks",
+        title: "Frameworks",
+        skills: [
+            { name: ".NET", icon: dotnetIcon },
+            { name: "Angular", icon: angularIcon },
+            { name: "Spring Boot", icon: springIcon },
+            { name: "Unity", icon: unityIcon },
+        ],
+    },
+    {
+        id: "bbdd",
+        title: "BBDD",
+        skills: [
+            { name: "MySQL", icon: mysqlIcon },
+            { name: "Oracle", icon: oracleIcon },
+            { name: "PostgreSQL", icon: postgreIcon },
+        ],
+    },
+    {
+        id: "tools",
+        title: "Herramientas",
+        skills: [
+            { name: "Git", icon: gitIcon },
+            { name: "Docker", icon: dockerIcon },
+            { name: "Postman", icon: postmanIcon },
+            { name: "WordPress", icon: wordpressIcon },
+            { name: "Wireshark", icon: wiresharkIcon },
+            { name: "IntelliJ IDEA", icon: intellijIcon },
+            { name: "Eclipse", icon: eclipseIcon },
+            { name: "Microsoft Visual Studio", icon: mvsIcon },
+            { name: "Visual Studio Code", icon: vscodeIcon },
+            { name: "Linux", icon: linuxIcon },
+        ],
+    },
+    {
+        id: "transversal",
+        title: "Formación Transversal",
+        skills: [
+            { name: "Modelado 3D", icon: modelIcon },
+            { name: "Animación 3D", icon: modelanimIcon },
+            { name: "Modding", icon: modIcon },
+
+        ],
+    },
+];
+---
+
+<section class="skills-section">
+    <div class="skills-top">
+        <h2>Habilidades</h2>
+        <div class="tabs-wrapper">
+            <div class="tabs-container">
+                {
+                    skillCategories.map((category, index) => (
+                        <button
+                            class={`tab-btn ${index === 0 ? "active" : ""}`}
+                            data-target={category.id}
+                            data-index={index}
+                        >
+                            {category.title}
+                        </button>
+                    ))
+                }
+            </div>
+        </div>
+    </div>
+
+    <div class="skills-body">
+        <button id="prev-btn" class="nav-arrow" aria-label="Anterior categoría">
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="32"
+                height="32"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+            >
+                <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M15 19l-7-7 7-7"></path>
+            </svg>
+        </button>
+
+        <div class="skills-viewport">
+            {
+                skillCategories.map((category, index) => (
+                    <div
+                        id={category.id}
+                        class={`skills-grid ${index === 0 ? "active" : ""}`}
+                    >
+                        {category.skills.map((skill) => (
+                            <div class="skill-card">
+                                <div class="icon-box">
+                                    {typeof skill.icon === "string" ? (
+                                        <svg
+                                            viewBox="0 0 24 24"
+                                            fill="currentColor"
+                                            width="40"
+                                            height="40"
+                                        >
+                                            <path d={skill.icon} />
+                                        </svg>
+                                    ) : (
+                                        <Image
+                                            src={skill.icon}
+                                            alt={skill.name}
+                                            class="skill-icon"
+                                            width={40}
+                                            height={40}
+                                        />
+                                    )}
+                                </div>
+                                <span>{skill.name}</span>
+                            </div>
+                        ))}
+                    </div>
+                ))
+            }
+        </div>
+
+        <button
+            id="next-btn"
+            class="nav-arrow"
+            aria-label="Siguiente categoría"
+        >
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="32"
+                height="32"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+            >
+                <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 5l7 7-7 7"></path>
+            </svg>
+        </button>
+    </div>
+</section>
+
+<script>
+    const tabs = document.querySelectorAll<HTMLElement>(".tab-btn");
+    const grids = document.querySelectorAll<HTMLElement>(".skills-grid");
+
+    const prevBtn = document.getElementById("prev-btn");
+    const nextBtn = document.getElementById("next-btn");
+
+    let currentIndex = 0;
+    const maxIndex = tabs.length - 1;
+
+    function updateView(index: number) {
+        // Gestionar Tabs
+        tabs.forEach((t) => t.classList.remove("active"));
+        // Comprobamos que el tab existe antes de acceder
+        if (tabs[index]) {
+            tabs[index].classList.add("active");
+            tabs[index].scrollIntoView({
+                behavior: "smooth",
+                block: "nearest",
+                inline: "center",
+            });
+
+            // Obtener el ID del target
+            const targetId = tabs[index].getAttribute("data-target");
+
+            if (targetId) {
+                // Gestionar Grids
+                grids.forEach((g) => {
+                    g.classList.remove("active");
+                    g.style.opacity = "0";
+                });
+
+                const targetGrid = document.getElementById(targetId);
+
+                if (targetGrid) {
+                    setTimeout(() => {
+                        targetGrid.classList.add("active");
+                        targetGrid.style.opacity = "1";
+                    }, 50);
+                }
+            }
+        }
+
+        currentIndex = index;
+    }
+
+    // Event Listeners
+    tabs.forEach((tab, index) => {
+        tab.addEventListener("click", () => updateView(index));
+    });
+
+    prevBtn?.addEventListener("click", () => {
+        let newIndex = currentIndex - 1;
+        if (newIndex < 0) newIndex = maxIndex;
+        updateView(newIndex);
+    });
+
+    nextBtn?.addEventListener("click", () => {
+        let newIndex = currentIndex + 1;
+        if (newIndex > maxIndex) newIndex = 0;
+        updateView(newIndex);
+    });
+</script>
+
+<style>
+    .skills-section {
+        max-width: 900px;
+        margin: 0 auto 3rem;
+        padding: 2rem;
+        border-radius: 1.5rem;
+        background: rgba(15, 23, 42, 0.9);
+        border: 1px solid rgba(148, 163, 184, 0.3);
+        color: #e5e7eb;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        position: relative;
+    }
+
+    .skills-top {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        align-items: center;
+    }
+
+    .skills-top h2 {
+        margin: 0;
+        font-size: 1.6rem;
+        align-self: flex-start;
+    }
+
+    .tabs-wrapper {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+        padding-bottom: 0.5rem;
+    }
+
+    .tabs-container {
+        display: flex;
+        gap: 1.5rem;
+        overflow-x: auto;
+        scrollbar-width: none;
+        padding: 0 0.5rem;
+    }
+
+    .tabs-container::-webkit-scrollbar {
+        display: none;
+    }
+
+    .tab-btn {
+        background: transparent;
+        border: none;
+        color: #9ca3af;
+        padding: 0.5rem 0.2rem;
+        cursor: pointer;
+        font-size: 1rem;
+        font-weight: 500;
+        white-space: nowrap;
+        position: relative;
+        transition: color 0.2s ease;
+    }
+
+    .tab-btn:hover {
+        color: #e5e7eb;
+    }
+
+    .tab-btn.active {
+        color: #22c55e;
+        font-weight: 600;
+    }
+
+    .tab-btn.active::after {
+        content: "";
+        position: absolute;
+        bottom: -0.6rem;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background: #22c55e;
+        border-radius: 3px 3px 0 0;
+    }
+
+    .skills-body {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        min-height: 200px;
+    }
+
+    .skills-viewport {
+        flex: 1;
+        overflow: hidden;
+        position: relative;
+        padding: 0.5rem;
+    }
+
+    .nav-arrow {
+        background: rgba(31, 41, 55, 0.5);
+        border: 1px solid rgba(148, 163, 184, 0.2);
+        color: #9ca3af;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.8rem;
+        border-radius: 50%;
+        transition: all 0.2s ease;
+        flex-shrink: 0;
+    }
+
+    .nav-arrow:hover {
+        background: #22c55e;
+        color: #022c22;
+        border-color: #22c55e;
+        transform: scale(1.1);
+        box-shadow: 0 0 15px rgba(34, 197, 94, 0.3);
+    }
+
+    .skills-grid {
+        display: none;
+        grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+        gap: 1.5rem;
+        transition: opacity 0.3s ease;
+        opacity: 0;
+    }
+
+    .skills-grid.active {
+        display: grid;
+        opacity: 1;
+        animation: slideIn 0.3s ease-out;
+    }
+
+    @keyframes slideIn {
+        from {
+            opacity: 0;
+            transform: translateX(10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    .skill-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.8rem;
+        padding: 1.2rem;
+        background: rgba(17, 24, 39, 0.6);
+        border: 1px solid rgba(75, 85, 99, 0.4);
+        border-radius: 1rem;
+        transition:
+            transform 0.2s ease,
+            border-color 0.2s ease,
+            background 0.2s;
+    }
+
+    .skill-card:hover {
+        transform: translateY(-4px);
+        border-color: #22c55e;
+        background: rgba(17, 24, 39, 0.9);
+    }
+
+    .icon-box {
+        width: 48px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .skill-icon {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+        transition: transform 0.2s ease;
+    }
+
+    .skill-card:hover .skill-icon {
+        transform: scale(1.1);
+    }
+
+    .skill-card span {
+        font-size: 0.9rem;
+        color: #e5e7eb;
+        text-align: center;
+        font-weight: 500;
+    }
+</style>
